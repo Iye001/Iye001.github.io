@@ -15,6 +15,7 @@
     --muted: #8B98A7;
     --accent: #5EEAD4;
     --accent-warm: #F5A524;
+    --accent-violet: #8B5CF6
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -54,7 +55,11 @@
   html { scroll-behavior: smooth; }
 a, button { transition: all 0.2s ease; }
 a:hover, button:hover { transform: translateY(-2px); opacity: 0.9; }
-#skills, #contact { background: var(--surface); }
+#about { background: radial-gradient(circle at 15% 20%, rgba(94,234,212,0.08), transparent 50%), var(--bg); }
+#skills { background: radial-gradient(circle at 85% 30%, rgba(139,92,246,0.10), transparent 55%), var(--bg); }
+#projects { background: radial-gradient(circle at 20% 70%, rgba(245,165,36,0.08), transparent 55%), var(--bg); }
+#demo { background: radial-gradient(circle at 80% 20%, rgba(94,234,212,0.10), transparent 55%), var(--bg); }
+#contact { background: radial-gradient(circle at 30% 80%, rgba(139,92,246,0.08), transparent 55%), var(--bg); }
 section > div, section > h2 { animation: fadeUp 0.6s ease both; }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -85,8 +90,8 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
       Building AI-powered automations, internal tools, and business systems that save time and improve productivity.
     </p>
     
-    <h1 style="font-family:'Space Grotesk', sans-serif; font-size: 56px; line-height: 1.1; margin-top: 60px; margin-bottom: 20px; background: linear-gradient (90deg, var(--text), var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-      Hi, I'm Kimani Alhassan.
+    <h1 style="font-family:'Space Grotesk', sans-serif; font-size: 56px; line-height: 1.1; margin-top: 60px; margin-bottom: 20px; color: var(--text);"> 
+      Hi, I'm <span style="color: var(--accent);">Kimani Alhassan</span>.
     </h1>
     <p style="color: var(--muted); font-size: 17px; line-height: 1.7; margin-bottom: 32px;">
       I'm someone who enjoys finding better ways to get work done. Whether it's automating repetitive tasks, organizing projects, or planning events, I love creating systems that make life easier for people and businesses.
