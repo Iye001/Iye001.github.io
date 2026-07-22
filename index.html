@@ -147,6 +147,7 @@
       </p>
       <span style="font-family:'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-warm);">Coming Soon</span>
       
+      
 <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; position: relative;">
       <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-bottom: 16px;"></div>
       <h3 style="font-family:'Space Grotesk', sans-serif; font-size: 18px; margin-bottom: 10px;">AI Customer Support Agent</h3>
@@ -158,5 +159,119 @@
   </div>
 
 </section>
+  <section id="demo" style="flex-direction: column; align-items: flex-start;">
+  <h2 style="font-family:'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 10px;">AI Workflow Builder Simulator</h2>
+  <p style="color: var(--muted); font-size: 14px; margin-bottom: 36px;">Pick a trigger, pick one or more actions, then generate the workflow.</p>
+
+  <div style="width:100%; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px;">
+
+    <p style="font-family:'IBM Plex Mono', monospace; color: var(--accent); font-size: 13px; margin-bottom: 12px;">01 — CHOOSE A TRIGGER</p>
+    <div id="triggerOptions" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 28px;">
+      <button class="trigger-btn" data-value="Form Submission" style="padding:10px 16px; border-radius:6px; border:1px solid var(--border); background: var(--bg); color: var(--text); cursor:pointer; font-family:'Inter',sans-serif;">📝 Form Submission</button>
+      <button class="trigger-btn" data-value="Email Received" style="padding:10px 16px; border-radius:6px; border:1px solid var(--border); background: var(--bg); color: var(--text); cursor:pointer; font-family:'Inter',sans-serif;">📧 Email Received</button>
+      <button class="trigger-btn" data-value="WhatsApp Message" style="padding:10px 16px; border-radius:6px; border:1px solid var(--border); background: var(--bg); color: var(--text); cursor:pointer; font-family:'Inter',sans-serif;">💬 WhatsApp Message</button>
+    </div>
+
+    <p style="font-family:'IBM Plex Mono', monospace; color: var(--accent-warm); font-size: 13px; margin-bottom: 12px;">02 — CHOOSE ACTION(S)</p>
+    <div id="actionOptions" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 28px;">
+      <button class="action-btn" data-value="Store in Airtable" style="padding:10px 16px; border-radius:6px; border:1px solid var(--border); background: var(--bg); color: var(--text); cursor:pointer; font-family:'Inter',sans-serif;">🗂️ Store in Airtable</button>
+      <button class="action-btn" data-value="Send Email" style="padding:10px 16px; border-radius:6px; border:1px solid var(--border); background: var(--bg); color: var(--text); cursor:pointer; font-family:'Inter',sans-serif;">✉️ Send Email</button>
+      <button class="action-btn" data-value="Generate AI Summary" style="padding:10px 16px; border-radius:6px; border:1px solid var(--border); background: var(--bg); color: var(--text); cursor:pointer; font-family:'Inter',sans-serif;">✨ Generate AI Summary</button>
+    </div>
+
+    <p id="demoError" style="color:#F87171; font-size:13px; margin-bottom:16px; display:none;"></p>
+
+    <button id="generateBtn" style="background: var(--accent); color:#0B0F14; border:none; padding:12px 28px; border-radius:6px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;">Generate Workflow →</button>
+
+    <div id="workflowOutput" style="margin-top:36px; display:flex; flex-wrap:wrap; align-items:center; gap:0;"></div>
+  </div>
+</section>
+
+<script>
+  const triggerBtns = document.querySelectorAll('.trigger-btn');
+  const actionBtns = document.querySelectorAll('.action-btn');
+  let selectedTrigger = null;
+  let selectedActions = [];
+
+  triggerBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      triggerBtns.forEach(b => { b.style.background = 'var(--bg)'; b.style.borderColor = 'var(--border)'; });
+      btn.style.background = 'var(--accent)';
+      btn.style.borderColor = 'var(--accent)';
+      btn.style.color = '#0B0F14';
+      selectedTrigger = btn.getAttribute('data-value');
+    });
+  });
+
+  actionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.getAttribute('data-value');
+      if (selectedActions.includes(val)) {
+        selectedActions = selectedActions.filter(a => a !== val);
+        btn.style.background = 'var(--bg)';
+        btn.style.borderColor = 'var(--border)';
+        btn.style.color = 'var(--text)';
+      } else {
+        selectedActions.push(val);
+        btn.style.background = 'var(--accent-warm)';
+        btn.style.borderColor = 'var(--accent-warm)';
+        btn.style.color = '#0B0F14';
+      }
+    });
+  });
+
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    const errorEl = document.getElementById('demoError');
+    const output = document.getElementById('workflowOutput');
+    output.innerHTML = '';
+
+    if (!selectedTrigger) {
+      errorEl.textContent = 'Please select a trigger first.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (selectedActions.length === 0) {
+      errorEl.textContent = 'Please select at least one action.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    const nodes = [selectedTrigger, ...selectedActions, 'Workflow Complete ✓'];
+
+    nodes.forEach((label, i) => {
+      const node = document.createElement('div');
+      node.textContent = label;
+      node.style.padding = '12px 18px';
+      node.style.borderRadius = '8px';
+      node.style.fontFamily = "'IBM Plex Mono', monospace";
+      node.style.fontSize = '13px';
+      node.style.opacity = '0';
+      node.style.transform = 'translateY(8px)';
+      node.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      node.style.background = i === nodes.length - 1 ? 'var(--accent)' : 'var(--bg)';
+      node.style.color = i === nodes.length - 1 ? '#0B0F14' : 'var(--text)';
+      node.style.border = '1px solid ' + (i === nodes.length - 1 ? 'var(--accent)' : 'var(--border)');
+      output.appendChild(node);
+
+      if (i < nodes.length - 1) {
+        const arrow = document.createElement('div');
+        arrow.textContent = '→';
+        arrow.style.margin = '0 10px';
+        arrow.style.color = 'var(--muted)';
+        arrow.style.opacity = '0';
+        arrow.style.transition = 'opacity 0.4s ease';
+        output.appendChild(arrow);
+        setTimeout(() => { arrow.style.opacity = '1'; }, i * 250 + 150);
+      }
+
+      setTimeout(() => {
+        node.style.opacity = '1';
+        node.style.transform = 'translateY(0)';
+      }, i * 250);
+    });
+  });
+</script>
+  
 </body>
 </html>
