@@ -15,7 +15,8 @@
     --muted: #8B98A7;
     --accent: #5EEAD4;
     --accent-warm: #F5A524;
-    --accent-violet: #8B5CF6
+    --accent-violet: #8B5CF6 
+     --accent-beige: #D4B896
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -40,12 +41,15 @@
     font-weight: 700;
     color: var(--accent);
   }
-  nav a {
+ nav a {
     color: var(--text);
     text-decoration: none;
-    margin-left: 28px;
     font-size: 14px;
-  }
+}
+nav a:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent);
+}
   section {
     min-height: 100vh;
     display: flex;
@@ -55,11 +59,11 @@
   html { scroll-behavior: smooth; }
 a, button { transition: all 0.2s ease; }
 a:hover, button:hover { transform: translateY(-2px); opacity: 0.9; }
-#about { background: radial-gradient(circle at 15% 20%, rgba(94,234,212,0.08), transparent 50%), var(--bg); }
-#skills { background: radial-gradient(circle at 85% 30%, rgba(139,92,246,0.10), transparent 55%), var(--bg); }
-#projects { background: radial-gradient(circle at 20% 70%, rgba(245,165,36,0.08), transparent 55%), var(--bg); }
-#demo { background: radial-gradient(circle at 80% 20%, rgba(94,234,212,0.10), transparent 55%), var(--bg); }
-#contact { background: radial-gradient(circle at 30% 80%, rgba(139,92,246,0.08), transparent 55%), var(--bg); }
+#about { background: radial-gradient(circle at 15% 20%, rgba(94,234,212,0.18), transparent 45%), var(--bg); }
+#skills { background: radial-gradient(circle at 85% 30%, rgba(139,92,246,0.20), transparent 50%), var(--bg); }
+#projects { background: radial-gradient(circle at 20% 70%, rgba(245,165,36,0.16), transparent 50%), var(--bg); }
+#demo { background: radial-gradient(circle at 80% 20%, rgba(212,184,150,0.20), transparent 50%), var(--bg); }
+#contact { background: radial-gradient(circle at 30% 80%, rgba(139,92,246,0.16), transparent 50%), var(--bg); }
 section > div, section > h2 { animation: fadeUp 0.6s ease both; }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -71,12 +75,12 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
 <body>
 
 <nav>
-  <div class="logo">KA</div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#demo">Demo</a>
-    <a href="#contact">Contact</a>
+  <div class="logo" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center;">KA</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;">
+    <a href="#about" style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px;">About</a>
+    <a href="#projects" style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px;">Projects</a>
+    <a href="#demo" style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px;">Demo</a>
+    <a href="#contact" style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px;">Contact</a>
   </div>
 </nav>
 
