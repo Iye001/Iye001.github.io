@@ -15,8 +15,8 @@
     --muted: #8B98A7;
     --accent: #5EEAD4;
     --accent-warm: #F5A524;
-    --accent-violet: #8B5CF6 
-     --accent-beige: #D4B896
+    --accent-violet: #8B5CF6;
+     --accent-beige: #D4B896;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -110,7 +110,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
 </style>
 </head>
 <body>
-
+<!-- ============================= -->
+<!-- NAVIGATION BAR -->
+<!-- ============================= -->
 <nav>
   <div class="logo" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center;">KA</div>
   <button id="menuToggle" style="display:none; background:none; border:1px solid var(--border); color:var(--text); border-radius:8px; padding:8px 12px; font-size:20px; cursor:pointer;">☰</button>
@@ -121,7 +123,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     <a href="#contact" style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px;">Contact</a>
   </div>
 </nav>
-  
+  <!-- ============================= -->
+<!-- ABOUT SECTION - hero, bio, photo, CV/work buttons -->
+<!-- ============================= -->
  <section id="about">
   <div class="about-wrap">
     <div class="about-top">
@@ -149,7 +153,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     </div>
   </div>
  </section>
-  
+  <!-- ============================= -->
+<!-- SKILLS SECTION -->
+<!-- ============================= -->
 <section id="skills" style="flex-direction: column; align-items: flex-start;">
   <h2 style="font-family:'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 40px;">Skills</h2>
 
@@ -182,6 +188,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
 
   </div>
 </section>
+  <!-- ============================= -->
+<!-- PROJECTS SECTION -->
+<!-- ============================= -->
   <section id="projects" style="flex-direction: column; align-items: flex-start;">
   <h2 style="font-family:'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 40px;">Projects</h2>
 
@@ -230,6 +239,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
   </div>
 
 </section>
+  <!-- ============================= -->
+<!-- INTERACTIVE DEMO - AI Workflow Builder Simulator -->
+<!-- ============================= -->
   <section id="demo" style="flex-direction: column; align-items: flex-start;">
   <h2 style="font-family:'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 10px;">AI Workflow Builder Simulator</h2>
   <p style="color: var(--muted); font-size: 14px; margin-bottom: 36px;">Pick a trigger, pick one or more actions, then generate the workflow.</p>
@@ -257,7 +269,7 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     <div id="workflowOutput" style="margin-top:36px; display:flex; flex-wrap:wrap; align-items:center; gap:0;"></div>
   </div>
 </section>
-
+<!-- JavaScript for the demo -->
 <script>
   const triggerBtns = document.querySelectorAll('.trigger-btn');
   const actionBtns = document.querySelectorAll('.action-btn');
@@ -343,7 +355,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     });
   });
 </script>
-
+<!-- ============================= -->
+<!-- CONTACT FORM - connected to Formspree -->
+<!-- ============================= -->
   <section id="contact" style="flex-direction: column; align-items: flex-start;">
   <h2 style="font-family:'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 36px;">Get In Touch</h2>
 
@@ -361,7 +375,7 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     <p id="formStatus" style="font-size:14px; display:none;"></p>
   </form>
 </section>
-
+<!-- JavaScript for contact form submission -->
 <script>
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
@@ -399,7 +413,9 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     submitBtn.disabled = false;
   });
 </script>
-  
+  <!-- ============================= -->
+<!-- FOOTER - social links -->
+<!-- ============================= -->
   <footer style="padding: 40px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
   <p style="color: var(--muted); font-size: 14px;">© 2026 Kimani Alhassan. Built with automation in mind.</p>
   <div style="display: flex; flex-wrap: wrap; gap: 24px;">
@@ -409,6 +425,7 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
     <a href="https://wa.me/2349139138393" target="_blank" rel="noopener" style="color: var(--text); text-decoration: none; font-size: 14px;">WhatsApp</a>
   </div>
 </footer>
+  <!-- JavaScript for mobile hamburger menu -->
  <script>
   document.getElementById('menuToggle').addEventListener('click', function() {
     document.getElementById('navLinks').classList.toggle('open');
