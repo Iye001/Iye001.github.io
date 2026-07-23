@@ -74,35 +74,24 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
   nav { padding: 16px 20px; }
   section { padding-top: 160px; }
 }
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "top photo" "bottom photo";
+  gap: 32px 48px;
+  align-items: start;
+}
+.about-top { grid-area: top; }
+.about-photo { grid-area: photo; align-self: center; }
+.about-bottom { grid-area: bottom; }
+
 @media (max-width: 600px) {
-  #about {
-    position: relative;
-    padding-top: 200px;
-    min-height: 100vh;
-    overflow: hidden;
+  .about-wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas: "top" "photo" "bottom";
+    gap: 24px;
   }
-  #about .hero-photo {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    width: 100%;
-    height: 340px;
-    object-fit: cover;
-    border-radius: 0;
-    border: none;
-    opacity: 0.25;
-    z-index: 0;
-  }
-  #about::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 340px;
-    background: linear-gradient(to bottom, rgba(11,15,20,0.75), rgba(11,15,20,0.95) 70%, var(--bg) 100%);
-    z-index: 0;
-  }
-  #about > div { position: relative; z-index: 1; flex-direction: column; }
-  #about img.hero-photo { display: block; }
-  #about .desktop-photo { display: none; }
+  .about-photo img { width: 100%; height: 280px; }
 }
 </style>
 </head>
@@ -118,30 +107,30 @@ section > div, section > h2 { animation: fadeUp 0.6s ease both; }
   </div>
 </nav>
   
-  <section id="about">
-  <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:center;">
-    <div style="max-width: 640px; flex: 1; min-width: 280px;">
-    <p style="font-family:'IBM Plex Mono', monospace; color: var(--accent); font-size: 14px; margin-bottom: 16px;">
-      // AI Automation Specialist · n8n Expert · Virtual Assistant · Event Planner
-    </p>
-    <p style="font-family:'Inter', sans-serif; color: var(--muted); font-size: 16px; margin-bottom: 20px; max-width: 600px;">
-      Building AI-powered automations, internal tools, and business systems that save time and improve productivity.
-    </p>
-    
-    <h1 style="font-family:'Space Grotesk', sans-serif; font-size: 56px; line-height: 1.1; margin-top: 60px; margin-bottom: 20px; color: var(--text);"> 
-      Hi, I'm <span style="color: var(--accent);">Kimani Alhassan</span>.
-    </h1>
-    <p style="color: var(--muted); font-size: 17px; line-height: 1.7; margin-bottom: 32px;">
-      I'm someone who enjoys finding better ways to get work done. Whether it's automating repetitive tasks, organizing projects, or planning events, I love creating systems that make life easier for people and businesses.
-Over the years, I've worked as a Virtual Assistant, Event Planner, and Project Coordinator while growing my skills in AI automation. I build practical solutions using tools like n8n, Airtable, Softr, and AI to automate processes, manage data, and improve workflows. I'm always excited to learn, solve problems, and build things that make a real difference.
-    </p>
-  <div style="display:flex; flex-wrap:wrap; gap:12px;">
-      <a href="#projects" style="background: var(--accent); color: #0B0F14; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; white-space: nowrap;">View My Work</a>
-      <a href="Kimani-Alhassan-CV.pdf" download style="border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 6px; text-decoration: none; white-space: nowrap;">Download CV</a>
+ <section id="about">
+  <div class="about-wrap">
+    <div class="about-top">
+      <p style="font-family:'IBM Plex Mono', monospace; color: var(--accent); font-size: 14px; margin-bottom: 16px;">
+        // AI Automation Specialist · n8n Expert · Virtual Assistant · Event Planner
+      </p>
+      <p style="font-family:'Inter', sans-serif; color: var(--muted); font-size: 16px; max-width: 600px;">
+        Building AI-powered automations, internal tools, and business systems that save time and improve productivity.
+      </p>
     </div>
-  </div>
-    <div style="flex-shrink:0;">
-      <img src="Kimani-photo.jpg.jpeg" alt="Kimani Alhassan" class="hero-photo desktop-photo" style="width: 440px; height: 440px; object-fit: cover; border-radius: 10px; border: 1px solid var(--accent);">
+    <div class="about-photo">
+      <img src="Kimani-photo.jpg.jpeg" alt="Kimani Alhassan" style="width: 440px; height: 440px; object-fit: cover; border-radius: 16px; border: 1px solid var(--accent); display:block;">
+    </div>
+    <div class="about-bottom">
+      <h1 style="font-family:'Space Grotesk', sans-serif; font-size: 56px; line-height: 1.1; margin-bottom: 20px; color: var(--text);">
+        Hi, I'm <span style="color: var(--accent);">Kimani Alhassan</span>.
+      </h1>
+      <p style="color: var(--muted); font-size: 17px; line-height: 1.7; margin-bottom: 32px;">
+        I'm someone who enjoys finding better ways to get work done. Whether it's automating repetitive tasks, organizing projects, or planning events, I love creating systems that make life easier for people and businesses. Over the years, I've worked as a Virtual Assistant, Event Planner, and Project Coordinator while growing my skills in AI automation. I build practical solutions using tools like n8n, Airtable, Softr, and AI to automate processes, manage data, and improve workflows. I'm always excited to learn, solve problems, and build things that make a real difference.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        <a href="#projects" style="background: var(--accent); color: #0B0F14; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; white-space: nowrap;">View My Work</a>
+        <a href="Kimani-Alhassan-CV.pdf" download style="border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 6px; text-decoration: none; white-space: nowrap;">Download CV</a>
+      </div>
     </div>
   </div>
 </section>
